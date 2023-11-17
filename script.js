@@ -21,10 +21,19 @@ function validarFormulario(e){
     if (!tarea.trim()){  //o tambien puede ser tarea.value == 0
         tituloForm.textContent = 'FORMULARIO VACIO';
 
+        //tiempo de retorno del formulario 
         setTimeout(()=>{
             tituloForm.textContent = 'FORMULARIO';
         }, 2000)
         return;
     }
+
+    //crear un obj
+    const objTarea = {
+        id: Date.now(), // vamos agregar un metodo que genera una fecha de cuantos milsegundos        
+        tarea: tarea,
+        estado: false
+    }
+    console.log(objTarea);
 
 }
