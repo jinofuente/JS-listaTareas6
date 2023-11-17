@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./script.js"></script>
+    <title>Lista de Tareas 6</title>
+</head>
+<body>
+    <h1>LISTA DE TAREAS</h1>
+
+    <div class="datos">
+        <p id="total">Total tareas: 0</p>
+        <p id="completadas">Tareas Completadas: 0</p>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="contenedor">
+
+        <form class="formulario" id="formulario">
+            <h4>FORMULARIO</h4>
+            <input type="text" id="tarea" placeholder="Ingresar Tarea...">
+            <input type="submit" value="Agregar">
+        </form>
+
+        <div class="tareas" id="tareas">
+
+            <div class="item-tarea">
+                <p>Tarea 1</p>
+                <div class="botones">
+                    <button class="eliminar" data-id="${item.id}">x</button>
+                    <button class="completada" data-id="${item.id}">?</button>
+                </div>
+            </div>
+            <!-- <h5>~SIN TAREAS~</h5> -->
+
+        </div>
+
+    </div>
+
+</body>
+</html>
