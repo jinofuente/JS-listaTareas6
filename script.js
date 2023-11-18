@@ -45,7 +45,16 @@ function validarFormulario(e){
 }
 
 function mostrarHtml(){
+
+    task.innerHTML = ''; // para que no cargue varias tareas
     
+    if(tareas.length < 1){
+        const mensaje = document.createElement("h5");
+        mensaje.textContent = "~SIN TAREAS~";
+        return;
+    }
+
+
     tareas.forEach((item)=>{
         const itemTarea = document.createElement("div");
         itemTarea.classList.add("item-tarea");
