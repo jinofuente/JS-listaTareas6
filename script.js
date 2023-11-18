@@ -104,3 +104,7 @@ function tareaCompletada(e){
         mostrarHtml();
     }
 }
+
+/* se avanzo hasta el minuto 38:00 
+se tiene el link del video
+https://www.youtube.com/watch?v=3mTMDG2mkwU */
