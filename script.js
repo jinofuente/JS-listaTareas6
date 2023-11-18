@@ -11,6 +11,7 @@ let tareas = [];
 
     formulario.addEventListener("submit", validarFormulario);
     task.addEventListener("click", eliminarTarea);
+    task.addEventListener("click", tareaCompletada);   // este era  completar tarea
 })();
 
 
@@ -60,7 +61,12 @@ function mostrarHtml(){
     tareas.forEach((item)=>{
         const itemTarea = document.createElement("div");
         itemTarea.classList.add("item-tarea");
-        itemTarea.innerHTML = ` <p>${item.tarea}</p>
+        itemTarea.innerHTML = ` 
+            ${item.estado ? (
+                `<p class="completa">${item.tarea}</p>`
+            ) : (
+                `<p>${item.tarea}</p>`
+            )}
             <div class="botones">
             <button class="eliminar" data-id="${item.id}">x</button>
             <button class="completada" data-id="${item.id}">?</button>
@@ -78,6 +84,23 @@ function eliminarTarea(e){
         //eliminando tarea
         const newTask = tareas.filter((item)=> item.id !== tareaID);
         tareas = newTask;
+        mostrarHtml();
+    }
+}
+
+//COMPLETAR TAREA
+function tareaCompletada(e){
+    if(e.target.classList.contains("completada")){
+        const tareaID = Number(e.target.getAttribute("data-id"));
+        //darlo por completado la tarea
+        const newTask = tareas.map((item) =>  {
+            if(item.id === tareaID){
+                item.estado = !item.estado;
+                return item;
+            }else{
+                return item;
+            }
+        })
         mostrarHtml();
     }
 }
