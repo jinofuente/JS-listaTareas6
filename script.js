@@ -10,6 +10,7 @@ let tareas = [];
  archivos o consola*/
 
     formulario.addEventListener("submit", validarFormulario);
+    task.addEventListener("click", eliminarTarea);
 })();
 
 
@@ -48,6 +49,7 @@ function mostrarHtml(){
 
     task.innerHTML = ''; // para que no cargue varias tareas
     
+    //es para agregar sin tareas cumpliendo la condicion
     if(tareas.length < 1){
         const mensaje = document.createElement("h5");
         mensaje.textContent = "~SIN TAREAS~";
@@ -67,4 +69,15 @@ function mostrarHtml(){
              task.appendChild(itemTarea);
 
     })
+}
+
+//ELIMINAR TAREA
+function eliminarTarea(e){
+    if(e.target.classList.contains("eliminar")){
+        const tareaID = Number(e.target.getAttribute("data-id"));
+        //eliminando tarea
+        const newTask = tareas.filter((item)=> item.id !== tareaID);
+        tareas = newTask;
+        mostrarHtml();
+    }
 }
