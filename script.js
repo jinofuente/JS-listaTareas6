@@ -1,6 +1,8 @@
 // variables
 const formulario = document.getElementById("formulario");
 const tituloForm = document.getElementById("tituloFormulario");
+const task = document.getElementById("tareas");
+let tareas = [];
 //eventos
 
 (()=>{ /*esto es para que todo los eventos que ejecutemos
@@ -34,6 +36,26 @@ function validarFormulario(e){
         tarea: tarea,
         estado: false
     }
-    console.log(objTarea);
+    tareas = [...tareas, objTarea]; //spritoperator tienes q buscar
+    formulario.reset(); //para eliminar el del input lo q introducimos
+    
+    //agregamos al HTML
+    mostrarHtml();
 
+}
+
+function mostrarHtml(){
+    
+    tareas.forEach((item)=>{
+        const itemTarea = document.createElement("div");
+        itemTarea.classList.add("item-tarea");
+        itemTarea.innerHTML = ` <p>${item.tarea}</p>
+            <div class="botones">
+            <button class="eliminar" data-id="${item.id}">x</button>
+            <button class="completada" data-id="${item.id}">?</button>
+            </div>
+             `;
+             task.appendChild(itemTarea);
+
+    })
 }
